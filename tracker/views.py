@@ -25,6 +25,9 @@ class ProjectViewSet(viewsets.ModelViewSet):
     serializer_class    = ProjectSerializer
     permission_classes  = [permissions.IsAuthenticated]
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
 
 class BugViewSet(viewsets.ModelViewSet):
     """
@@ -45,6 +48,9 @@ class BugViewSet(viewsets.ModelViewSet):
     serializer_class    = BugSerializer
     permission_classes  = [permissions.IsAuthenticated]
 
+    def perform_create(self, serializer):
+        serializer.save(created_by=self.request.user)
+
 
 class CommentViewSet(viewsets.ModelViewSet):
     """
@@ -64,6 +70,9 @@ class CommentViewSet(viewsets.ModelViewSet):
     queryset            = Comment.objects.all()
     serializer_class    = CommentSerializer
     permission_classes  = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(commenter=self.request.user)
 
 
 class BugAssignedApiView(APIView):

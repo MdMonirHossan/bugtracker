@@ -40,9 +40,12 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
+
+    # 'django.contrib.staticfiles',    # required for swagger UI css/js files
+    'drf_yasg',
     
     'user',
-    'tracker'
+    'tracker',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +58,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+APPEND_SLASH = False
 ROOT_URLCONF = 'bugtracker.urls'
+
 
 TEMPLATES = [
     {

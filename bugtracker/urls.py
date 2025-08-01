@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from libs.utils.swagger.swagger_configurations import schema_view
 
 urlpatterns = [
     # Admin url
@@ -29,4 +30,9 @@ urlpatterns = [
     # Third party urls (Authentication)
     path('api/token', TokenObtainPairView.as_view(), name='obtain_token'),
     path('api/token/refresh', TokenRefreshView.as_view(), name='refresh_token'),
+
+    # Swagger UI urls
+    path('swagger<format>', schema_view.without_ui(cache_timeout=0), name='schema_json'),
+    path('swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema_swagger_ui'),
+    path('redoc', schema_view.with_ui('redoc', cache_timeout=0), name='schema_redoc')
 ]
