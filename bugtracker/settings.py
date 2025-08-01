@@ -25,12 +25,17 @@ SECRET_KEY = 'django-insecure-xzz0a#shn&qlrh!jvatv%wc5--h#-g*k8t4j7pt_7_e$x^)5tm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+
+    # Channels Apps
+    'daphne',
+
+    # Django core apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,14 +43,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # DRF Apps
     'rest_framework',
     'rest_framework.authtoken',
-
-    # 'django.contrib.staticfiles',    # required for swagger UI css/js files
-    'drf_yasg',
     
+    # Project apps
     'user',
     'tracker',
+
+    # DRF Yet Another Swagger App
+    # 'django.contrib.staticfiles',    # required for swagger UI css/js files
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +66,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Prevent suffix slash in the urls
 APPEND_SLASH = False
 ROOT_URLCONF = 'bugtracker.urls'
 
@@ -78,9 +87,15 @@ TEMPLATES = [
     },
 ]
 
+# Config for both ASGI & WSGI Application
+ASGI_APPLICATION = 'bugtracker.asgi.application'
 WSGI_APPLICATION = 'bugtracker.wsgi.application'
 
 
+CSP_CONNECT_SRC = ("'self'", "ws://localhost:8000")
+
+
+# Config for DRF JWTAuthentication
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -90,6 +105,15 @@ REST_FRAMEWORK = {
     ]
 }
 
+# Config for Redis channel layer for real-time communication
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG':{
+            'hosts': [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
