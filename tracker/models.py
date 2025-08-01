@@ -6,6 +6,12 @@ from libs.utils.constants.model_constants import STATUS_CHOICES, PRIORITY_CHOICE
 # Create your models here.
 
 class Project(BaseModel):
+    '''
+        This model/entity is responsible for storing all data for Project.
+        Inheritance: BaseModel
+        Relations: User
+        Ordering: -created_by
+    '''
     name        = models.CharField(max_length=100, unique=True, error_messages={'unique': 'Project already exists with this name.'})
     description = models.TextField(max_length=1000)
     owner       = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
@@ -18,6 +24,12 @@ class Project(BaseModel):
     
 
 class Bug(BaseModel):
+    '''
+        This model/entity is responsible for storing all data for Bug in a Project.
+        Inheritance: BaseModel
+        Relations: [User, Project]
+        Ordering: -created_by
+    '''
     title       = models.CharField(max_length=100)
     description = models.TextField(max_length=1000)
     status      = models.CharField(choices=STATUS_CHOICES, max_length=20, default='Open')
@@ -34,6 +46,12 @@ class Bug(BaseModel):
     
 
 class Comment(BaseModel):
+    '''
+        This model/entity is responsible for storing all data of Comment in a Bug.
+        Inheritance: BaseModel
+        Relations: [User, Bug]
+        Ordering: -created_by
+    '''
     bug         = models.ForeignKey(Bug, related_name='comments', on_delete=models.CASCADE)
     commenter   = models.ForeignKey(User, on_delete=models.CASCADE)
     message     = models.TextField(max_length=1000)
