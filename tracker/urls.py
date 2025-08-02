@@ -12,9 +12,9 @@ from .views import (
 router = DefaultRouter()
 
 # Register route for ViewSets
-router.register('projects', ProjectViewSet)
-router.register('bugs', BugViewSet)
-router.register('comments', CommentViewSet)
+router.register(r'projects/?', ProjectViewSet, basename='project_viewset')
+router.register(r'bugs/?', BugViewSet, basename='bug_viewset')
+router.register(r'comments/?', CommentViewSet, basename='comment_viewset')
 
 # custom urls for APIView
 custom_urls = [
