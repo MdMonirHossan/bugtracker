@@ -1,7 +1,7 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 
-class TrackerConsumer(AsyncWebsocketConsumer):
+class ProjectConsumer(AsyncWebsocketConsumer):
     """
     WebSocket consumer for real-time communication.
     This will manage connections, disconnection, and message broadcasting within a group named project_{id}.
@@ -12,7 +12,13 @@ class TrackerConsumer(AsyncWebsocketConsumer):
         """
         self.project_id = self.scope['url_route']['kwargs']['project_id']    # Extracts project ID from url
         self.room_group_name = f'project_{self.project_id}'   # create a unique group name
-        await self.channel_layer.group_add(self.room_group_name, self.channel_name)   # add the channel to a project group
+        
+        # add the channel to a project group
+        await self.channel_layer.group_add(
+            self.room_group_name, 
+            self.channel_name
+        )
+        
         await self.accept()   # Accept WebSocket connection (HandShake)
 
         # Accepts the connections, and sends confirmations message.
@@ -26,35 +32,32 @@ class TrackerConsumer(AsyncWebsocketConsumer):
         Handles WebSocket disconnection.
         Removes the channel from project group.
         """
-        await self.channel_layer.group_discard(self.room_group_name, self.channel_name)
+        await self.channel_layer.group_discard(
+            self.room_group_name, 
+            self.channel_name
+        )
 
     
-    async def receive(self, text_data):
-        """
-        Handles message receive from the client over WebSocket
-        """
-        # Send the received message to all channels in the project group
-        await self.channel_layer.group_send(
-            self.room_group_name,
-            {
-                'type': 'broadcast_message',
-                'message': json.loads(text_data)
-            }
-        )
+    # async def receive(self, text_data):
+    #     """
+    #     Handles message receive from the client over WebSocket
+    #     """
+    #     # Send the received message to all channels in the project group
+    #     await self.channel_layer.group_send(
+    #         self.room_group_name,
+    #         {
+    #             'type': 'broadcast_message',
+    #             'message': json.loads(text_data)
+    #         }
+    #     )
     
-    async def broadcast_message(self, event):
+    async def bug_update(self, event):
         """
         Handles message broadcast
         invoked by group_send 
         send the received message directly to the client connected this consumer
         """
-        await self.send(text_data=json.dumps(event['message']))
+        await self.send(text_data=json.dumps(event['data']))
 
-    
 
-    # This method will be called via channel_layer.group_send
-    async def bug_created(self, event):
-        await self.send(text_data=json.dumps({
-            'type': 'bug_created',
-            'message': event['message']
-        }))
+
