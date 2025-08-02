@@ -35,7 +35,7 @@ class ActivityLog(BaseModel):
 
     def __str__(self):
         if self.user:
-            return f"{self.user.username} {self.action} {self.created_at.strftime('%Y-%m-%d %H:%M:%S')}"
+            return f"{self.user.username} - {self.action} - {self.created_at.strftime('%Y-%m-%d %H:%M:%S')}"
         else:
-            return f"{self.action} {self.created_at.strftime('%Y-%m-%d %H:%M:%S')}"
+            return f"{self.action} - {self.created_at.strftime('%Y-%m-%d %H:%M:%S')}"
 

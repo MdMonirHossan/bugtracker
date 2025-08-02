@@ -9,7 +9,7 @@ from .views import (
 )
 
 # Default router initialization
-router = DefaultRouter()
+router = DefaultRouter(trailing_slash=False)
 
 # Register route for ViewSets
 router.register(r'projects/?', ProjectViewSet, basename='project_viewset')

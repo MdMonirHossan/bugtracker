@@ -20,7 +20,7 @@ class UserAdmin(BaseUserAdmin):
             'fields': ('is_superuser', 'is_staff')
         })
     )
-    list_display = ['id' , 'email', 'username', 'is_superuser', 'is_staff', 'date_joined', 'last_login', 'is_active']
+    list_display = ['username', 'id' , 'email', 'is_superuser', 'is_staff', 'date_joined', 'last_login', 'is_active']
     search_fields = ('email', 'username')
     ordering = ('-date_joined',)
 

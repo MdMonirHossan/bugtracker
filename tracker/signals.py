@@ -1,6 +1,8 @@
+import json
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .models import Bug, Comment
+from activity_log.models import ActivityLog
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 from .serializers import BugSerializer, CommentSerializer
@@ -19,13 +21,28 @@ def bug_event(sender, instance, created, **kwargs):
     serializer = BugSerializer(instance)
 
     # message payload for WebSocket.
+    action = 'bug.created' if created else 'bug.updated'
     data = {
         'type': 'bug_update',
         'data': {
-            'action': 'bug.created' if created else 'bug.updated',
+            'action': action,
             **serializer.data
         }
     }
+
+    # Log and activity when a Bug instance is created or updated
+    try:
+        desc = f"{instance.created_by.username} {'created' if created else 'updated'} bug: {instance.title}"
+        ActivityLog.objects.create( 
+            project = instance.project,
+            user = instance.created_by,
+            action = action,
+            description = desc,
+            data = json.dumps(data),
+            ip_address = channel_layer
+        )
+    except:
+        pass
 
     # send the message to the relevant WebSocket group using channel layer.
     async_to_sync(channel_layer.group_send)(
@@ -53,6 +70,19 @@ def comment_event(sender, instance, created, **kwargs):
         recipients.add(bug.created_by.id)
     if bug.assigned_to:
         recipients.add(bug.assigned_to.id)
+    
+    # Log and activity when a Bug instance is created or updated
+    try:
+        desc = f"{instance.commenter.username} created comment in project : {bug.project.name}"
+        activity_log = ActivityLog.objects.create( 
+            project = bug.project,
+            user = instance.commenter,
+            action = 'comment.created',
+            description = desc,
+            ip_address = channel_layer
+        )
+    except Exception as e:
+        print('excepton in comment ', str(e))
 
     if recipients:
         # message payload for WebSocket.
@@ -63,6 +93,11 @@ def comment_event(sender, instance, created, **kwargs):
                 **serializer.data
             }
         }
+        try:
+            activity_log.data = json.dumps(data)
+            activity_log.save()
+        except Exception as e:
+            print(' excetp ', str(e))
         # send the message to the relevant WebSocket group using channel layer.
         for id in recipients:
             async_to_sync(channel_layer.group_send)(
