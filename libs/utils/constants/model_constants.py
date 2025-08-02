@@ -11,3 +11,13 @@ PRIORITY_CHOICES = (
     ('Medium', 'Medium'), 
     ('High', 'High')
 )
+
+# Action options for Activity Log
+ACTION_CHOICES = (
+    ('bug_created', 'Bug Created'),
+    ('bug_updated', 'Bug Updated'),
+    ('comment_created', 'Comment Created'),
+    ('comment_updated', 'Comment Updated'),
+    ('project_created', 'Project Created'),
+    ('project_updated', 'Projected Update')
+)
