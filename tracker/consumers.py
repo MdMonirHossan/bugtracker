@@ -85,9 +85,7 @@ class UserConsumer(AsyncWebsocketConsumer):
             try:
                 validate_token = UntypedToken(token)
                 jwt_auth = JWTAuthentication()
-
                 user = await sync_to_async(jwt_auth.get_user)(validate_token)
-                
                 self.scope['user'] = user
             except Exception as e:
                 print('Auth error ; ', str(e))
@@ -97,7 +95,7 @@ class UserConsumer(AsyncWebsocketConsumer):
 
         self.user_id = self.scope['user'].id
 
-        if user.is_anonymous:
+        if self.scope['user'].is_anonymous:
             await self.close()
         else:
 
