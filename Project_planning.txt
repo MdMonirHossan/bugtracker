@@ -1,0 +1,107 @@
+Planning for Bug Tracker in Django
+Section 1: Project Setup
+	- Create djanog project
+	- Setup virtual env
+	- Start app
+	- Install required packages
+	- Project Configurations 
+
+Section 2: Model Design
+	- BaseModel (Abstract Model)
+	- Project
+	- Bug
+	- Comment
+
+Section 3: Api Enpoints (DRF)
+	- Serializers
+	- Authentication using JWT
+	- Views
+	- Urls
+	- Filter bugs by status or project logic
+	- List bugs assigned to a user Api
+	- Api documentation (Using Swagger)
+
+Section 4: Websocket Integration
+	- Install required packages
+	- Websockets Configurations 
+	- Test websocket connections
+	- Consumer logic
+	- Routing
+	- Signals for real-time update (Using django signal and websocket)
+
+Section 5: WebSocket test
+	- Test websocket in browser console.
+	- Python script for real-time update upon bug activity.
+	- Python script for real-time update upon comment creation.
+
+Section 6: Activity Log
+	- Model Design
+	- Store logs (Using django signals)
+	- serializer
+	- view
+	- Stream logs
+
+Section 7: Add README 
+	- Setup Instructions
+	- Api endpoints
+	- WebSocket test
+	
+	
+	
+	
+WebSocket Test Script (Python):
+*** Project Room by Project ID (Create or Update Bug)
+	- bugtracket/scripts/bug_websocket.py
+	- run python bug_websocket.py
+
+*** User Room by User ID (Create Comment)
+	- bugtracker/scripts/comment_websocket.py
+	- run python comment_websocket.py
+
+	
+Wobsocket Test Script (JS):
+
+*** Project Room by Project ID (Create or Update Bug)
+
+	let socket = new WebSocket("ws://localhost:8000/ws/project/2/");
+	
+	socket.onmessage = (event) => {
+	  console.log("📨 Received:", JSON.parse(event.data));
+	};
+	
+	socket.onopen = () => {
+	  console.log("✅ WebSocket connected");
+	};
+
+	---------------------------------------------------------
+	
+*** User Room by User ID (Create Comment)
+
+	const token = "jwt_token"
+	let socket = new WebSocket(`ws://localhost:8000/ws/user/?token=${token}`)
+
+	socket.onmessage = (event) => {
+	  console.log("📨 Received:", JSON.parse(event.data));
+	};
+
+	socket.onopen = () => {
+	  console.log("✅ WebSocket connected");
+	};
+	
+
+
+*** Send message to the server
+	const chatSocket = new WebSocket('ws://localhost:8000/ws/-/');
+
+	chatSocket.onopen = function() {
+	  console.log('WebSocket connection established.');
+	  const message = {
+	    'message': 'Hello, world!'
+	  };
+	  chatSocket.send(JSON.stringify(message));
+	};
+	chatSocket.onmessage = function(event) {
+	  const message = JSON.parse(event.data);
+	  console.log('Received message:', message);
+	};
+	

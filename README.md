@@ -5,8 +5,13 @@ A real-time bug tracking system built with Django, Django REST Framework (DRF), 
 ## Features
 - JWT-based authentication
 - Project, Bug, Comment, and ActivityLog models
-- Real-time WebSocket updates for bug events and comments
 - Clean RESTful API with DRF
+- CRUD API for:
+    - Project
+    - Bug
+    - Comment
+    - Activity Log
+- Real-time WebSocket updates for bug events and comments
 - Redis-backed WebSocket support using Django Channels
 
 ## Setup Instructions
@@ -101,21 +106,21 @@ const token = "jwt_token"
 	};
 ```
 
+### Project workflow/planning available at
+[Workflow/Planning](https://github.com/MdMonirHossan/bugtracker/blob/main/Project_planning.txt)
 
 
 ## API Endpoints
-
-- POST `/api/token/`: Get JWT
-- GET `/api/bugs/assigned/`: Bugs assigned to you
-- GET `/api/bugs/filter_by_status/?status=Open&project=1`
 
 | Method | Endpoint                      | Description                   |
 | ------ | ----------------------------- | ----------------------------- |
 | POST   | `/api/register`               | User registration             |
 | POST   | `/api/token`                  | Get JWT tokens                |
-| POST   | `/api/token/refresh`          | Get JWT tokens with Refresh                |
+| POST   | `/api/token/refresh`          | Get JWT tokens with Refresh   | 
 | GET    | `/api/projects`               | List user projects            |
-| POST   | `/api/projects/`              | Create a new project          |
+| POST   | `/api/projects`               | Create a new project          |
+| GET    | `/api/projects/<id>`          | Get project by ID             |
+| PUT    | `/api/projects/<id>`          | Update existing Project       |
 | GET    | `/api/bugs/`                  | List bugs                     |
 | GET    | `/api/bugs/assigned/`         | Bugs assigned to current user |
 | GET    | `/api/bugs/filter_by_status/` | Filter bugs by status/project |
