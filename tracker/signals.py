@@ -15,8 +15,6 @@ def bug_event(sender, instance, created, **kwargs):
     """
     serializer = BugSerializer(instance)
 
-    print('------ channel_layer', channel_layer)
-
     # message payload for WebSocket.
     data = {
         'type': 'bug_update',
@@ -25,7 +23,7 @@ def bug_event(sender, instance, created, **kwargs):
             **serializer.data
         }
     }
-    print('channel_layer.group_send -- ', channel_layer.group_send)
+    
     # send the message to the relevant WebSocket group using channel layer.
     async_to_sync(channel_layer.group_send)(
         f'project_{instance.project.id}',
