@@ -6,7 +6,7 @@ A real-time bug tracking system built with Django, Django REST Framework (DRF), 
 - JWT-based authentication
 - Project, Bug, Comment, and ActivityLog models
 - Clean RESTful API with DRF
-- CRUD API for:
+- CRUD API for (`Pagination`):
     - Project
     - Bug
     - Comment
@@ -50,7 +50,7 @@ Swagger Docs
 Redoc Docs
 [http://localhost:8000/redoc](http://localhost:8000/redoc)
 
-## 💬 WebSocket
+## WebSocket
 **Available Socket URL**
 `ws://localhost:8000/ws/project/<project_id>`
 `ws://localhost:8000/ws/user/?token={access_token}`
@@ -106,24 +106,36 @@ const token = "jwt_token"
 	};
 ```
 
-### Project workflow/planning available at
+## Project workflow/planning available at
 [Workflow/Planning](https://github.com/MdMonirHossan/bugtracker/blob/main/Project_planning.txt)
 
 
 ## API Endpoints
 
-| Method | Endpoint                      | Description                   |
-| ------ | ----------------------------- | ----------------------------- |
-| POST   | `/api/register`               | User registration             |
-| POST   | `/api/token`                  | Get JWT tokens                |
-| POST   | `/api/token/refresh`          | Get JWT tokens with Refresh   | 
-| GET    | `/api/projects`               | List user projects            |
-| POST   | `/api/projects`               | Create a new project          |
-| GET    | `/api/projects/<id>`          | Get project by ID             |
-| PUT    | `/api/projects/<id>`          | Update existing Project       |
-| GET    | `/api/bugs/`                  | List bugs                     |
-| GET    | `/api/bugs/assigned/`         | Bugs assigned to current user |
-| GET    | `/api/bugs/filter_by_status/` | Filter bugs by status/project |
-| POST   | `/api/comments/`              | Add comment to a bug          |
-
-
+| Method | Endpoint                                  | Description                   |
+| ------ | ----------------------------------------- | ----------------------------- |
+| POST   | `/api/register`                           | User registration             |
+| POST   | `/api/token`                              | Get JWT tokens                |
+| POST   | `/api/token/refresh`                      | Get JWT tokens with Refresh   | 
+| GET    | `/api/projects`                           | List user projects            |
+| POST   | `/api/projects`                           | Create a new project          |
+| GET    | `/api/projects/<id>`                      | Get project by ID             |
+| PUT    | `/api/projects/<id>`                      | Update existing Project       |
+| PATCH  | `/api/projects/<id>`                      | Partially Update a Project    |
+| Delete | `/api/projects/<id>`                      | Delete a Project by ID        |
+| GET    | `/api/bugs`                               | List bugs                     |
+| POST   | `/api/bugs`                               | Create new bugs               |
+| GET    | `/api/bugs/<id>`                          | Get bug by ID                 |
+| PUT    | `/api/bugs/<id>`                          | Update existing bug by ID     |
+| PATCH  | `/api/bugs/<id>`                          | Partially Update bug by ID    |
+| DELETE | `/api/bugs/<id>`                          | Delete bug by ID              |
+| GET    | `/api/bugs/assigned`                      | Bugs assigned to request user |
+| GET    | `/api/bugs/filter/?status=Open&project=1` | Filter bugs by status/project |
+| GET    | `/api/comments`                           | List Comments                 |
+| POST   | `/api/comments`                           | Create new comment            |
+| GET    | `/api/comments/<id>`                      | Get comment by ID             |
+| PUT    | `/api/comments/<id>`                      | Update existing comment by ID |
+| PATCH  | `/api/comments/<id>`                      | Partially Update comment by ID|
+| DELETE | `/api/comments/<id>`                      | Delete comment by ID          |
+| GET    | `/api/activity_logs`                      | List logs                     |
+| GET    | `/api/activity_logs/<id>`                 | Get logs by ID                |    
