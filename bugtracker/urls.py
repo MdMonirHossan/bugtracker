@@ -26,6 +26,7 @@ urlpatterns = [
     # App urls
     path('api/', include('user.urls')),
     path('api/', include('tracker.urls')),
+    path('api/', include('activity_log.urls')),
 
     # Third party urls (Authentication)
     path('api/token', TokenObtainPairView.as_view(), name='obtain_token'),

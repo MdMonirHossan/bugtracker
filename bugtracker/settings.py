@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     # Project apps
     'user',
     'tracker',
+    'activity_log',
 
     # DRF Yet Another Swagger App
     # 'django.contrib.staticfiles',    # required for swagger UI css/js files
