@@ -17,7 +17,7 @@ from bugtracker.routing import websocket_urlpatterns
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bugtracker.settings')
 
 """
-    ASGI application setup for bot http and websocket protocol/connection.
+ ASGI application setup for bot http and websocket protocol/connection.
 """
 application =  ProtocolTypeRouter({
     "http": get_asgi_application(),

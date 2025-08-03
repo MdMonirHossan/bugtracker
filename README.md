@@ -23,10 +23,14 @@ cd bugtracker
 ```
 - **Create a virtual environment & Activate**
 ```bash 
+# virtual environment
+
 python -m venv venv
 ```
 - **Install dependencies**
 ```bash
+# Project dependencies
+
 pip install -r requirements.txt
 ```
 - **Setup & run Redis in docker** 

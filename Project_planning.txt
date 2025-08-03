@@ -39,13 +39,21 @@ Section 6: Activity Log
 	- Store logs (Using django signals)
 	- serializer
 	- view
-	- Stream logs
+	- Stream logs via WebSocket event
+	- Python script for real-time log streams
 
 Section 7: Add README 
 	- Setup Instructions
 	- Api endpoints
-	- WebSocket test
-	
+	- WebSocket connections setup
+
+Section 8: Finishing
+	- Code Review
+	- Check Bugs
+	- Refactoring
+	- Code Documentation
+	- Test API's
+	- Test WebSocket real-time event
 	
 	
 	

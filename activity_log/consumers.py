@@ -32,7 +32,7 @@ class StreamActivityLogConsumer(AsyncWebsocketConsumer):
     async def disconnect(self, close_code):
         """
         Handles WebSocket disconnection.
-        Removes the channel from project group.
+        Removes the channel from activity_log group.
         """
         await self.channel_layer.group_discard(
             self.group_name,

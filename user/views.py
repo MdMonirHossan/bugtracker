@@ -8,8 +8,8 @@ class UserRegistrationView(generics.CreateAPIView):
     '''
         User Register view
     ''' 
-    serializer_class = UserRegistrationSerializer
-    permission_classes = (AllowAny,)
+    serializer_class    = UserRegistrationSerializer
+    permission_classes  = (AllowAny,)
 
     def create(self, request, *args, **kwargs):
         '''
