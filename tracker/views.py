@@ -88,8 +88,10 @@ class BugAssignedApiView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
+        print('------ user ', request.user)
         bugs = Bug.objects.filter(assigned_to=request.user)
         serializer = BugSerializer(bugs, many=True)
+        print('00000 ------', serializer.data)
         return Response(serializer.data)
     
 

@@ -8,6 +8,12 @@ from .views import (
     BugFilterApiView
 )
 
+# custom urls for APIView
+custom_urls = [
+    path('bugs/assigned', BugAssignedApiView.as_view(), name='bug_assigned'),
+    path('bugs/filter', BugFilterApiView.as_view(), name='bug_filter')
+]
+
 # Default router initialization
 router = DefaultRouter(trailing_slash=False)
 
@@ -16,14 +22,7 @@ router.register(r'projects/?', ProjectViewSet, basename='project_viewset')
 router.register(r'bugs/?', BugViewSet, basename='bug_viewset')
 router.register(r'comments/?', CommentViewSet, basename='comment_viewset')
 
-# custom urls for APIView
-custom_urls = [
-    path('bugs/assigned', BugAssignedApiView.as_view(), name='bug_assigned'),
-    path('bugs/filter', BugFilterApiView.as_view(), name='bug_filter')
-]
-
 # Urls for tracker app
-urlpatterns = router.urls + custom_urls
-
+urlpatterns = custom_urls + router.urls
 
 
