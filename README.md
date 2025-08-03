@@ -15,29 +15,30 @@ A real-time bug tracking system built with Django, Django REST Framework (DRF), 
 - Redis-backed WebSocket support using Django Channels
 
 ## Setup Instructions
-- Clone the repo or Unzip the file.
+- **Clone the repo or Unzip the file.**
 ```bash
 git clone git@github.com:MdMonirHossan/bugtracker.git
     
 cd bugtracker
 ```
-- Create a virtual environment & Activate
+- **Create a virtual environment & Activate**
 ```bash 
 python -m venv venv
 ```
-- Install dependencies
+- **Install dependencies**
 ```bash
 pip install -r requirements.txt
 ```
-- Setup & run Redis in docker
+- **Setup & run Redis in docker** 
+<br><small>If you don't have redis setup locally</small>
 ```dockerfile
 docker run -d --name redis -p 6379:6379 redis
 ```
-- Run migrations
+- **Run migrations**
 ```bash
 python mange.py migrate
 ```
-- Start server on port `8000` (Port should be `8000`)
+- **Start server on port `8000` (Port should be `8000`)**
 ```bash
 python manage.py runserver
 ```
@@ -61,16 +62,19 @@ Redoc Docs
 
 ## Connect to WebSocket 
 ### WebSocket Test Script (Python) <small>You'll find these script in project root directory</small>
-- Project Room by Project ID(Create or Update Bug) 
+- Project Room by Project ID (Create or Update Bug) 
 ```bash 
-/bugtracket/scripts/bug_websocket.py
+
+cd /bugtracket/scripts/bug_websocket.py
+
 # Run in multiple Terminal for joining in different project room
 $ python bug_websocket.py
 ```
 
 - User Room by User ID (Create Comment)
 ```bash
-/bugtracker/scripts/comment_websocket.py
+
+cd /bugtracker/scripts/comment_websocket.py
 
 # Run the script in multiple Terminal to get real-time notification
 $ python comment_websocket.py
