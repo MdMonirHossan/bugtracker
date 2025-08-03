@@ -55,14 +55,17 @@ Redoc Docs
 **Available Socket URL**
 `ws://localhost:8000/ws/project/<project_id>`
 `ws://localhost:8000/ws/user/?token={access_token}`
+`ws://localhost:8000/ws/logs/`
 - Events:
   - `bug.created`
   - `bug.updated`
   - `comment.created`
+  - `stream_log`
 
 ## Connect to WebSocket 
-### WebSocket Test Script (Python) <small>You'll find these script in project root directory</small>
-- Project Room by Project ID (Create or Update Bug) 
+### WebSocket Test Script (Python) <br>
+**`You'll find these script in project root directory`**
+- **Project Room by Project ID (Create or Update Bug)** 
 ```bash 
 
 cd /bugtracket/scripts/bug_websocket.py
@@ -71,7 +74,7 @@ cd /bugtracket/scripts/bug_websocket.py
 $ python bug_websocket.py
 ```
 
-- User Room by User ID (Create Comment)
+- **User Room by User ID (Create Comment)**
 ```bash
 
 cd /bugtracker/scripts/comment_websocket.py
@@ -80,8 +83,17 @@ cd /bugtracker/scripts/comment_websocket.py
 $ python comment_websocket.py
 ```
 
+- **Stream log**
+```bash
+
+cd /bugtracker/scripts/stream_log_websocket.py
+
+# Run the script in multiple Terminal to get real-time notification
+$ python stream_log_websocket.py
+```
+
 ### WobSocket Test Script (`Javascript`):
-- Project Room by Project ID (Create or Update Bug)
+- **Project Room by Project ID (Create or Update Bug)**
 ```javascript
 // Run this script in multiple browser console with different project ID. Try to run it under http://localhost:8000 to avoid CSP connect src
 let socket = new WebSocket("ws://localhost:8000/ws/project/2/");
@@ -95,7 +107,7 @@ let socket = new WebSocket("ws://localhost:8000/ws/project/2/");
 	};
 
 ```
-- User Room by User ID (Create Comment)
+- **User Room by User ID (Create Comment)**
 ```javascript
 // Run this script in multiple browser console with different access token. Try to run it under http://localhost:8000 to avoid CSP connect src
 const token = "jwt_token"
@@ -110,8 +122,23 @@ const token = "jwt_token"
 	};
 ```
 
+- **Stream Log room (Create)**
+```javascript
+// Run this script in multiple browser console. Try to run it under http://localhost:8000 to avoid "CSP connect src"
+let socket = new WebSocket("ws://localhost:8000/ws/logs/");
+	
+	socket.onmessage = (event) => {
+	  console.log("📨 Received:", JSON.parse(event.data));
+	};
+	
+	socket.onopen = () => {
+	  console.log("✅ WebSocket connected");
+	};
+
+```
+
 ## Project workflow/planning available at
-[Workflow/Planning](https://github.com/MdMonirHossan/bugtracker/blob/main/Project_planning.txt)
+**=> [Workflow/Planning](https://github.com/MdMonirHossan/bugtracker/blob/main/Project_planning.txt)**
 
 
 ## API Endpoints
