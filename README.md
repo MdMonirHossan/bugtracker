@@ -118,15 +118,18 @@ const token = "jwt_token"
 
 | Method | Endpoint                                  | Description                   |
 | ------ | ----------------------------------------- | ----------------------------- |
+|        |                       **Auth**                                             |
 | POST   | `/api/register`                           | User registration             |
 | POST   | `/api/token`                              | Get JWT tokens                |
-| POST   | `/api/token/refresh`                      | Get JWT tokens with Refresh   | 
+| POST   | `/api/token/refresh`                      | Get JWT tokens with Refresh   |
+|        |                        **Project**                                         | 
 | GET    | `/api/projects`                           | List user projects            |
 | POST   | `/api/projects`                           | Create a new project          |
 | GET    | `/api/projects/<id>`                      | Get project by ID             |
 | PUT    | `/api/projects/<id>`                      | Update existing Project       |
 | PATCH  | `/api/projects/<id>`                      | Partially Update a Project    |
 | Delete | `/api/projects/<id>`                      | Delete a Project by ID        |
+|        |                        **Bug**                                             |
 | GET    | `/api/bugs`                               | List bugs                     |
 | POST   | `/api/bugs`                               | Create new bugs               |
 | GET    | `/api/bugs/<id>`                          | Get bug by ID                 |
@@ -135,11 +138,13 @@ const token = "jwt_token"
 | DELETE | `/api/bugs/<id>`                          | Delete bug by ID              |
 | GET    | `/api/bugs/assigned`                      | Bugs assigned to request user |
 | GET    | `/api/bugs/filter/?status=Open&project=1` | Filter bugs by status/project |
+|        |                      **Comment**                                         |
 | GET    | `/api/comments`                           | List Comments                 |
 | POST   | `/api/comments`                           | Create new comment            |
 | GET    | `/api/comments/<id>`                      | Get comment by ID             |
 | PUT    | `/api/comments/<id>`                      | Update existing comment by ID |
 | PATCH  | `/api/comments/<id>`                      | Partially Update comment by ID|
 | DELETE | `/api/comments/<id>`                      | Delete comment by ID          |
+|        |                        **Activity Log**                                  |
 | GET    | `/api/activity_logs`                      | List logs                     |
 | GET    | `/api/activity_logs/<id>`                 | Get logs by ID                |    
