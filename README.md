@@ -73,6 +73,7 @@ cd /bugtracket/scripts/bug_websocket.py
 # Run in multiple Terminal for joining in different project room
 $ python bug_websocket.py
 ```
+<small><b>***`This will ask for project ID`***<b></small>
 
 - **User Room by User ID (Create Comment)**
 ```bash
@@ -82,6 +83,7 @@ cd /bugtracker/scripts/comment_websocket.py
 # Run the script in multiple Terminal to get real-time notification
 $ python comment_websocket.py
 ```
+<small><b>***`This will ask for User Credentials`***</b></small>
 
 - **Stream log**
 ```bash
