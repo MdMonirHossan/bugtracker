@@ -1,0 +1,2576 @@
+{
+	"info": {
+		"_postman_id": "c2dfee15-37bb-4921-99c0-72f48269f660",
+		"name": "DoinTech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "User Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"Martin\",\n  \"email\": \"martin@gmail.com\",\n  \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/user/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"Martin\",\n  \"email\": \"martin@gmail.com\",\n  \"password\": \"password123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/user/register",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"user",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"username\": \"Martin\",\n    \"email\": \"martin@gmail.com\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const reposnseJson=pm.response.json();",
+									"const accessToken=reposnseJson.access;",
+									"const refreshToken=reposnseJson.refresh;",
+									"pm.environment.set(\"access_token\",accessToken);",
+									"pm.environment.set(\"refresh\", refreshToken);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"{{username}}\",\n\t\"password\": \"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/token",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"{{username}}\",\n\t\"password\": \"{{password}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/token",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "483"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1NDgwOTk0NCwiaWF0IjoxNzU0MjA1MTQ0LCJqdGkiOiIzODViNzEzZWMxZmE0ZDkwYjZlMjNjOWYzOWQ3ZWY4YiIsInVzZXJfaWQiOjN9.q3sCfaEi7eGA6NWNxDfVCr_Nh5-tsKVxIUut41XT2pk\",\n    \"access\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MjA2OTQ0LCJpYXQiOjE3NTQyMDUxNDQsImp0aSI6ImVhMTU5OWQ1ODdjMzQxNzFiZmMwZWIyZDRjZTJiM2NmIiwidXNlcl9pZCI6M30.9WoyYek9SZ475RPvo1fk8r60DFxNoz4_w_yM5eL5OTw\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Resfesh Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const reposnseJson=pm.response.json();",
+									"const accessToken=reposnseJson.access;",
+									"pm.environment.set(\"access_token\",accessToken)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"refresh\": \"{{refresh}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/token/refresh",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"token",
+								"refresh"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Resfesh Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"refresh\": \"{{refresh}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/token/refresh",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"token",
+										"refresh"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 01 Aug 2025 08:56:11 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "241"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MDM4ODcxLCJpYXQiOjE3NTQwMzg0MzQsImp0aSI6IjU5MDQ3MWY1MDI1NzRlZTM4NzA5YTc0NzM2ZTcwZTVjIiwidXNlcl9pZCI6Mn0.tm93_BIUSaH6b-4U0shjyKH247oxxcv_M9uUWL6KneE\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "All Projects",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "All Projects",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/projects",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"projects"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1618"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 4,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 4,\n            \"created_at\": \"2025-08-01T13:59:50.884567Z\",\n            \"updated_at\": \"2025-08-01T13:59:50.884603Z\",\n            \"name\": \"Smart Home Automation System\",\n            \"description\": \"A software system for controlling smart home devices (lights, thermostats, security cameras) through a central dashboard or voice commands. It would include device pairing, custom scene creation (e.g., 'Movie Night' scene to dim lights and lower thermostat), scheduling, and remote access.\",\n            \"owner\": 3\n        },\n        {\n            \"id\": 3,\n            \"created_at\": \"2025-08-01T13:58:55.949179Z\",\n            \"updated_at\": \"2025-08-01T13:58:55.949205Z\",\n            \"name\": \"Local Food Delivery Service App\",\n            \"description\": \"A mobile application (iOS and Android) that connects local restaurants with customers for food delivery. Features include restaurant listings, menu Browse, order placement, payment integration, real-time order tracking, and delivery driver management.\",\n            \"owner\": 3\n        },\n        {\n            \"id\": 2,\n            \"created_at\": \"2025-08-01T13:38:50.988156Z\",\n            \"updated_at\": \"2025-08-01T13:38:50.988187Z\",\n            \"name\": \"Online Learning Platform\",\n            \"description\": \"A web-based application that allows users to register as students or instructors. Instructors can create and upload courses (videos, documents, quizzes), and students can enroll in these courses, track their progress, and take quizzes. The platform would include features like user profiles, search functionality for courses, and a notification system.\",\n            \"owner\": 3\n        },\n        {\n            \"id\": 1,\n            \"created_at\": \"2025-08-01T05:36:38.475566Z\",\n            \"updated_at\": \"2025-08-02T14:02:10.091049Z\",\n            \"name\": \"Test project update partially\",\n            \"description\": \"Update description for project test\",\n            \"owner\": 1\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Project by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Project by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/projects/3",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"projects",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "413"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 3,\n    \"created_at\": \"2025-08-01T13:58:55.949179Z\",\n    \"updated_at\": \"2025-08-01T13:58:55.949205Z\",\n    \"name\": \"Local Food Delivery Service App\",\n    \"description\": \"A mobile application (iOS and Android) that connects local restaurants with customers for food delivery. Features include restaurant listings, menu Browse, order placement, payment integration, real-time order tracking, and delivery driver management.\",\n    \"owner\": 3\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Smart Home Automation System\",\n  \"description\": \"A software system for controlling smart home devices (lights, thermostats, security cameras) through a central dashboard or voice commands. It would include device pairing, custom scene creation (e.g., 'Movie Night' scene to dim lights and lower thermostat), scheduling, and remote access.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Project",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Smart Home Automation System\",\n  \"description\": \"A software system for controlling smart home devices (lights, thermostats, security cameras) through a central dashboard or voice commands. It would include device pairing, custom scene creation (e.g., 'Movie Night' scene to dim lights and lower thermostat), scheduling, and remote access.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/projects",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"projects"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 01 Aug 2025 13:59:50 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.10"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "448"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"created_at\": \"2025-08-01T13:59:50.884567Z\",\n    \"updated_at\": \"2025-08-01T13:59:50.884603Z\",\n    \"name\": \"Smart Home Automation System\",\n    \"description\": \"A software system for controlling smart home devices (lights, thermostats, security cameras) through a central dashboard or voice commands. It would include device pairing, custom scene creation (e.g., 'Movie Night' scene to dim lights and lower thermostat), scheduling, and remote access.\",\n    \"owner\": 3\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Test Project Update Title\",\n  \"description\": \"Update description for project test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Project",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Test Project Update Title\",\n  \"description\": \"Update description for project test\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/projects/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"projects",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "191"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"created_at\": \"2025-08-01T05:36:38.475566Z\",\n    \"updated_at\": \"2025-08-02T13:59:45.436718Z\",\n    \"name\": \"Test Project Update Title\",\n    \"description\": \"Update description for project test\",\n    \"owner\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Project (Partially)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Test project update partially\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Project (Partially)",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Test project update partially\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/projects/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"projects",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "195"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"created_at\": \"2025-08-01T05:36:38.475566Z\",\n    \"updated_at\": \"2025-08-02T14:02:10.091049Z\",\n    \"name\": \"Test project update partially\",\n    \"description\": \"Update description for project test\",\n    \"owner\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bug",
+			"item": [
+				{
+					"name": "All Bugs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/bugs",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"bugs"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "All Bugs",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/bugs",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"bugs"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1316"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 3,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 17,\n            \"created_at\": \"2025-08-03T06:37:48.013544Z\",\n            \"updated_at\": \"2025-08-03T06:38:33.694186Z\",\n            \"title\": \"Incorrect Quiz Score Calculation for Multiple Attempts\",\n            \"description\": \"When a student takes a quiz multiple times, the system sometimes incorrectly averages the scores instead of taking the highest score, or it might not update the score at all after a second attempt. This leads to inaccurate performance tracking for students.\",\n            \"status\": \"In Progress\",\n            \"priority\": \"Low\",\n            \"assigned_to\": 2,\n            \"project\": 2,\n            \"created_by\": 3\n        },\n        {\n            \"id\": 15,\n            \"created_at\": \"2025-08-02T10:14:33.576115Z\",\n            \"updated_at\": \"2025-08-02T10:14:33.576141Z\",\n            \"title\": \"Incorrect Quiz Score Calculation for Multiple Attempts\",\n            \"description\": \"When a student takes a quiz multiple times, the system sometimes incorrectly averages the scores instead of taking the highest score, or it might not update the score at all after a second attempt. This leads to inaccurate performance tracking for students.\",\n            \"status\": \"Open\",\n            \"priority\": \"High\",\n            \"assigned_to\": 2,\n            \"project\": 2,\n            \"created_by\": 3\n        },\n        {\n            \"id\": 1,\n            \"created_at\": \"2025-08-01T05:38:27.673052Z\",\n            \"updated_at\": \"2025-08-01T10:43:51.648427Z\",\n            \"title\": \"User\",\n            \"description\": \"User creation is not working.\",\n            \"status\": \"Open\",\n            \"priority\": \"Medium\",\n            \"assigned_to\": 2,\n            \"project\": 1,\n            \"created_by\": 1\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Bug by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/bugs/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"bugs",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Bug by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/bugs/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"bugs",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "234"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"created_at\": \"2025-08-01T05:38:27.673052Z\",\n    \"updated_at\": \"2025-08-01T10:43:51.648427Z\",\n    \"title\": \"User\",\n    \"description\": \"User creation is not working.\",\n    \"status\": \"Open\",\n    \"priority\": \"Medium\",\n    \"assigned_to\": 2,\n    \"project\": 1,\n    \"created_by\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Bug",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Course Search Filter Not Working for Categories\",\n  \"description\": \"Users are unable to filter courses by category. When a category is selected in the search filter, the search results remain unchanged or display irrelevant courses.\",\n  \"status\": \"In Progress\",\n  \"priority\": \"Low\",\n  \"assigned_to\": 2,\n  \"project\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/bugs",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"bugs"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Bug",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"Course Search Filter Not Working for Categories\",\n  \"description\": \"Users are unable to filter courses by category. When a category is selected in the search filter, the search results remain unchanged or display irrelevant courses.\",\n  \"status\": \"In Progress\",\n  \"priority\": \"Low\",\n  \"assigned_to\": 2,\n  \"project\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/bugs",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"bugs"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "417"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 17,\n    \"created_at\": \"2025-08-03T06:37:48.013544Z\",\n    \"updated_at\": \"2025-08-03T06:37:48.013574Z\",\n    \"title\": \"Course Search Filter Not Working for Categories\",\n    \"description\": \"Users are unable to filter courses by category. When a category is selected in the search filter, the search results remain unchanged or display irrelevant courses.\",\n    \"status\": \"In Progress\",\n    \"priority\": \"Low\",\n    \"assigned_to\": 2,\n    \"project\": 2,\n    \"created_by\": 3\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Bug",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Incorrect Quiz Score Calculation for Multiple Attempts\",\n  \"description\": \"When a student takes a quiz multiple times, the system sometimes incorrectly averages the scores instead of taking the highest score, or it might not update the score at all after a second attempt. This leads to inaccurate performance tracking for students.\",\n  \"project\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/bugs/17",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"bugs",
+								"17"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Bug",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"Incorrect Quiz Score Calculation for Multiple Attempts\",\n  \"description\": \"When a student takes a quiz multiple times, the system sometimes incorrectly averages the scores instead of taking the highest score, or it might not update the score at all after a second attempt. This leads to inaccurate performance tracking for students.\",\n  \"project\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/bugs/17",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"bugs",
+										"17"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "517"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 17,\n    \"created_at\": \"2025-08-03T06:37:48.013544Z\",\n    \"updated_at\": \"2025-08-03T06:38:33.694186Z\",\n    \"title\": \"Incorrect Quiz Score Calculation for Multiple Attempts\",\n    \"description\": \"When a student takes a quiz multiple times, the system sometimes incorrectly averages the scores instead of taking the highest score, or it might not update the score at all after a second attempt. This leads to inaccurate performance tracking for students.\",\n    \"status\": \"In Progress\",\n    \"priority\": \"Low\",\n    \"assigned_to\": 2,\n    \"project\": 2,\n    \"created_by\": 3\n}"
+						}
+					]
+				},
+				{
+					"name": "Status Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"In Progress\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/bugs/11",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"bugs",
+								"11"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Status Update",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"In Progress\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/bugs/11",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"bugs",
+										"11"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "518"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 11,\n    \"created_at\": \"2025-08-02T06:30:01.839677Z\",\n    \"updated_at\": \"2025-08-02T06:40:19.625551Z\",\n    \"title\": \"Incorrect Quiz Score Calculation for Multiple Attempts\",\n    \"description\": \"When a student takes a quiz multiple times, the system sometimes incorrectly averages the scores instead of taking the highest score, or it might not update the score at all after a second attempt. This leads to inaccurate performance tracking for students.\",\n    \"status\": \"In Progress\",\n    \"priority\": \"High\",\n    \"assigned_to\": 2,\n    \"project\": 2,\n    \"created_by\": 3\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Bug",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/bugs/16",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"bugs",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assigned Bugs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/bugs/assigned",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"bugs",
+								"assigned"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Assigned Bugs",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/bugs/assigned",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"bugs",
+										"assigned"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1266"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 17,\n        \"created_at\": \"2025-08-03T06:37:48.013544Z\",\n        \"updated_at\": \"2025-08-03T06:38:33.694186Z\",\n        \"title\": \"Incorrect Quiz Score Calculation for Multiple Attempts\",\n        \"description\": \"When a student takes a quiz multiple times, the system sometimes incorrectly averages the scores instead of taking the highest score, or it might not update the score at all after a second attempt. This leads to inaccurate performance tracking for students.\",\n        \"status\": \"In Progress\",\n        \"priority\": \"Low\",\n        \"assigned_to\": 2,\n        \"project\": 2,\n        \"created_by\": 3\n    },\n    {\n        \"id\": 15,\n        \"created_at\": \"2025-08-02T10:14:33.576115Z\",\n        \"updated_at\": \"2025-08-02T10:14:33.576141Z\",\n        \"title\": \"Incorrect Quiz Score Calculation for Multiple Attempts\",\n        \"description\": \"When a student takes a quiz multiple times, the system sometimes incorrectly averages the scores instead of taking the highest score, or it might not update the score at all after a second attempt. This leads to inaccurate performance tracking for students.\",\n        \"status\": \"Open\",\n        \"priority\": \"High\",\n        \"assigned_to\": 2,\n        \"project\": 2,\n        \"created_by\": 3\n    },\n    {\n        \"id\": 1,\n        \"created_at\": \"2025-08-01T05:38:27.673052Z\",\n        \"updated_at\": \"2025-08-01T10:43:51.648427Z\",\n        \"title\": \"User\",\n        \"description\": \"User creation is not working.\",\n        \"status\": \"Open\",\n        \"priority\": \"Medium\",\n        \"assigned_to\": 2,\n        \"project\": 1,\n        \"created_by\": 1\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Bug Filter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/bugs/filter?status=Open",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"bugs",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "Open"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Bug Filter",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/bugs/filter?status=Open",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"bugs",
+										"filter"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "Open"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "748"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 15,\n        \"created_at\": \"2025-08-02T10:14:33.576115Z\",\n        \"updated_at\": \"2025-08-02T10:14:33.576141Z\",\n        \"title\": \"Incorrect Quiz Score Calculation for Multiple Attempts\",\n        \"description\": \"When a student takes a quiz multiple times, the system sometimes incorrectly averages the scores instead of taking the highest score, or it might not update the score at all after a second attempt. This leads to inaccurate performance tracking for students.\",\n        \"status\": \"Open\",\n        \"priority\": \"High\",\n        \"assigned_to\": 2,\n        \"project\": 2,\n        \"created_by\": 3\n    },\n    {\n        \"id\": 1,\n        \"created_at\": \"2025-08-01T05:38:27.673052Z\",\n        \"updated_at\": \"2025-08-01T10:43:51.648427Z\",\n        \"title\": \"User\",\n        \"description\": \"User creation is not working.\",\n        \"status\": \"Open\",\n        \"priority\": \"Medium\",\n        \"assigned_to\": 2,\n        \"project\": 1,\n        \"created_by\": 1\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "All Comments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "All Comments",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/comments",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"comments"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "752"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 3,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 11,\n            \"created_at\": \"2025-08-03T06:45:48.622732Z\",\n            \"updated_at\": \"2025-08-03T06:45:48.622762Z\",\n            \"message\": \"Checked the network requests; the category parameter isn't being sent. Likely a UI binding issue.\",\n            \"bug\": 17,\n            \"commenter\": 3\n        },\n        {\n            \"id\": 7,\n            \"created_at\": \"2025-08-02T10:43:35.212417Z\",\n            \"updated_at\": \"2025-08-02T10:43:35.212442Z\",\n            \"message\": \"Root cause seems to be an issue in the calculateQuizScore function. It's likely not handling subsequent attempts correctly. Needs to be investigated urgently.\",\n            \"bug\": 15,\n            \"commenter\": 3\n        },\n        {\n            \"id\": 1,\n            \"created_at\": \"2025-08-01T05:39:04.839135Z\",\n            \"updated_at\": \"2025-08-02T14:08:41.062188Z\",\n            \"message\": \"Give me the full details and logs. (partially update)\",\n            \"bug\": 1,\n            \"commenter\": 1\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Comment by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/11",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"11"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Comment by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/comments/11",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"comments",
+										"11"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "228"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 11,\n    \"created_at\": \"2025-08-03T06:45:48.622732Z\",\n    \"updated_at\": \"2025-08-03T06:45:48.622762Z\",\n    \"message\": \"Checked the network requests; the category parameter isn't being sent. Likely a UI binding issue.\",\n    \"bug\": 17,\n    \"commenter\": 3\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"message\": \"Checked the network requests; the category parameter isn't being sent. Likely a UI binding issue.\",\n  \"bug\": 17\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Comment",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"message\": \"Checked the network requests; the category parameter isn't being sent. Likely a UI binding issue.\",\n  \"bug\": 17\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/comments",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"comments"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "228"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 11,\n    \"created_at\": \"2025-08-03T06:45:48.622732Z\",\n    \"updated_at\": \"2025-08-03T06:45:48.622762Z\",\n    \"message\": \"Checked the network requests; the category parameter isn't being sent. Likely a UI binding issue.\",\n    \"bug\": 17,\n    \"commenter\": 3\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"message\": \"Give me the full details and logs.\",\n  \"bug\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Comment",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"message\": \"Give me the full details and logs.\",\n  \"bug\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/comments/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"comments",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "163"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"created_at\": \"2025-08-01T05:39:04.839135Z\",\n    \"updated_at\": \"2025-08-02T14:06:36.522401Z\",\n    \"message\": \"Give me the full details and logs.\",\n    \"bug\": 1,\n    \"commenter\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Comment (partially)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"message\": \"Give me the full details and logs. (partially update)\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Comment (partially)",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"message\": \"Give me the full details and logs. (partially update)\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/comments/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"comments",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "182"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"created_at\": \"2025-08-01T05:39:04.839135Z\",\n    \"updated_at\": \"2025-08-02T14:08:41.062188Z\",\n    \"message\": \"Give me the full details and logs. (partially update)\",\n    \"bug\": 1,\n    \"commenter\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/comments/8",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Activity Log",
+			"item": [
+				{
+					"name": "All Logs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/activity-logs",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"activity-logs"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "All Logs",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/activity-logs",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"activity-logs"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "8848"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 13,\n    \"next\": \"http://127.0.0.1:8000/api/activity-logs?page=2\",\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 13,\n            \"created_at\": \"2025-08-03T06:45:48.631446Z\",\n            \"updated_at\": \"2025-08-03T06:45:48.638390Z\",\n            \"action\": \"comment.created\",\n            \"description\": \"jhon created comment in project : Online Learning Platform\",\n            \"data\": \"{\\\"type\\\": \\\"comment_notification\\\", \\\"data\\\": {\\\"action\\\": \\\"comment.create\\\", \\\"id\\\": 11, \\\"created_at\\\": \\\"2025-08-03T06:45:48.622732Z\\\", \\\"updated_at\\\": \\\"2025-08-03T06:45:48.622762Z\\\", \\\"message\\\": \\\"Checked the network requests; the category parameter isn't being sent. Likely a UI binding issue.\\\", \\\"bug\\\": 17, \\\"commenter\\\": 3}}\",\n            \"ip_address\": \"RedisChannelLayer(hosts=[{'host': '127.0.0.1', 'port': 6379}])\",\n            \"project\": 2,\n            \"user\": 3\n        },\n        {\n            \"id\": 12,\n            \"created_at\": \"2025-08-03T06:38:33.700510Z\",\n            \"updated_at\": \"2025-08-03T06:38:33.700534Z\",\n            \"action\": \"bug.updated\",\n            \"description\": \"jhon updated bug: Incorrect Quiz Score Calculation for Multiple Attempts\",\n            \"data\": \"{\\\"type\\\": \\\"bug_update\\\", \\\"data\\\": {\\\"action\\\": \\\"bug.updated\\\", \\\"id\\\": 17, \\\"created_at\\\": \\\"2025-08-03T06:37:48.013544Z\\\", \\\"updated_at\\\": \\\"2025-08-03T06:38:33.694186Z\\\", \\\"title\\\": \\\"Incorrect Quiz Score Calculation for Multiple Attempts\\\", \\\"description\\\": \\\"When a student takes a quiz multiple times, the system sometimes incorrectly averages the scores instead of taking the highest score, or it might not update the score at all after a second attempt. This leads to inaccurate performance tracking for students.\\\", \\\"status\\\": \\\"In Progress\\\", \\\"priority\\\": \\\"Low\\\", \\\"assigned_to\\\": 2, \\\"project\\\": 2, \\\"created_by\\\": 3}}\",\n            \"ip_address\": \"RedisChannelLayer(hosts=[{'host': '127.0.0.1', 'port': 6379}])\",\n            \"project\": 2,\n            \"user\": 3\n        },\n        {\n            \"id\": 11,\n            \"created_at\": \"2025-08-03T06:37:48.018496Z\",\n            \"updated_at\": \"2025-08-03T06:37:48.018533Z\",\n            \"action\": \"bug.created\",\n            \"description\": \"jhon created bug: Course Search Filter Not Working for Categories\",\n            \"data\": \"{\\\"type\\\": \\\"bug_update\\\", \\\"data\\\": {\\\"action\\\": \\\"bug.created\\\", \\\"id\\\": 17, \\\"created_at\\\": \\\"2025-08-03T06:37:48.013544Z\\\", \\\"updated_at\\\": \\\"2025-08-03T06:37:48.013574Z\\\", \\\"title\\\": \\\"Course Search Filter Not Working for Categories\\\", \\\"description\\\": \\\"Users are unable to filter courses by category. When a category is selected in the search filter, the search results remain unchanged or display irrelevant courses.\\\", \\\"status\\\": \\\"In Progress\\\", \\\"priority\\\": \\\"Low\\\", \\\"assigned_to\\\": 2, \\\"project\\\": 2, \\\"created_by\\\": 3}}\",\n            \"ip_address\": \"RedisChannelLayer(hosts=[{'host': '127.0.0.1', 'port': 6379}])\",\n            \"project\": 2,\n            \"user\": 3\n        },\n        {\n            \"id\": 10,\n            \"created_at\": \"2025-08-03T06:24:05.471508Z\",\n            \"updated_at\": \"2025-08-03T06:24:05.471533Z\",\n            \"action\": \"bug.updated\",\n            \"description\": \"jhon updated bug: Incorrect Quiz Score Calculation for Multiple Attempts\",\n            \"data\": \"{\\\"type\\\": \\\"bug_update\\\", \\\"data\\\": {\\\"action\\\": \\\"bug.updated\\\", \\\"id\\\": 16, \\\"created_at\\\": \\\"2025-08-02T13:29:23.035730Z\\\", \\\"updated_at\\\": \\\"2025-08-03T06:24:05.462467Z\\\", \\\"title\\\": \\\"Incorrect Quiz Score Calculation for Multiple Attempts\\\", \\\"description\\\": \\\"When a student takes a quiz multiple times, the system sometimes incorrectly averages the scores instead of taking the highest score, or it might not update the score at all after a second attempt. This leads to inaccurate performance tracking for students.\\\", \\\"status\\\": \\\"In Progress\\\", \\\"priority\\\": \\\"Low\\\", \\\"assigned_to\\\": 2, \\\"project\\\": 2, \\\"created_by\\\": 3}}\",\n            \"ip_address\": \"RedisChannelLayer(hosts=[{'host': '127.0.0.1', 'port': 6379}])\",\n            \"project\": 2,\n            \"user\": 3\n        },\n        {\n            \"id\": 9,\n            \"created_at\": \"2025-08-03T06:24:04.012896Z\",\n            \"updated_at\": \"2025-08-03T06:24:04.012932Z\",\n            \"action\": \"bug.updated\",\n            \"description\": \"jhon updated bug: Incorrect Quiz Score Calculation for Multiple Attempts\",\n            \"data\": \"{\\\"type\\\": \\\"bug_update\\\", \\\"data\\\": {\\\"action\\\": \\\"bug.updated\\\", \\\"id\\\": 16, \\\"created_at\\\": \\\"2025-08-02T13:29:23.035730Z\\\", \\\"updated_at\\\": \\\"2025-08-03T06:24:04.007430Z\\\", \\\"title\\\": \\\"Incorrect Quiz Score Calculation for Multiple Attempts\\\", \\\"description\\\": \\\"When a student takes a quiz multiple times, the system sometimes incorrectly averages the scores instead of taking the highest score, or it might not update the score at all after a second attempt. This leads to inaccurate performance tracking for students.\\\", \\\"status\\\": \\\"In Progress\\\", \\\"priority\\\": \\\"Low\\\", \\\"assigned_to\\\": 2, \\\"project\\\": 2, \\\"created_by\\\": 3}}\",\n            \"ip_address\": \"RedisChannelLayer(hosts=[{'host': '127.0.0.1', 'port': 6379}])\",\n            \"project\": 2,\n            \"user\": 3\n        },\n        {\n            \"id\": 8,\n            \"created_at\": \"2025-08-03T06:24:01.941098Z\",\n            \"updated_at\": \"2025-08-03T06:24:01.941121Z\",\n            \"action\": \"bug.updated\",\n            \"description\": \"jhon updated bug: Incorrect Quiz Score Calculation for Multiple Attempts\",\n            \"data\": \"{\\\"type\\\": \\\"bug_update\\\", \\\"data\\\": {\\\"action\\\": \\\"bug.updated\\\", \\\"id\\\": 16, \\\"created_at\\\": \\\"2025-08-02T13:29:23.035730Z\\\", \\\"updated_at\\\": \\\"2025-08-03T06:24:01.932136Z\\\", \\\"title\\\": \\\"Incorrect Quiz Score Calculation for Multiple Attempts\\\", \\\"description\\\": \\\"When a student takes a quiz multiple times, the system sometimes incorrectly averages the scores instead of taking the highest score, or it might not update the score at all after a second attempt. This leads to inaccurate performance tracking for students.\\\", \\\"status\\\": \\\"In Progress\\\", \\\"priority\\\": \\\"Low\\\", \\\"assigned_to\\\": 2, \\\"project\\\": 2, \\\"created_by\\\": 3}}\",\n            \"ip_address\": \"RedisChannelLayer(hosts=[{'host': '127.0.0.1', 'port': 6379}])\",\n            \"project\": 2,\n            \"user\": 3\n        },\n        {\n            \"id\": 7,\n            \"created_at\": \"2025-08-03T06:23:46.071848Z\",\n            \"updated_at\": \"2025-08-03T06:23:46.071875Z\",\n            \"action\": \"bug.updated\",\n            \"description\": \"jhon updated bug: Incorrect Quiz Score Calculation for Multiple Attempts\",\n            \"data\": \"{\\\"type\\\": \\\"bug_update\\\", \\\"data\\\": {\\\"action\\\": \\\"bug.updated\\\", \\\"id\\\": 16, \\\"created_at\\\": \\\"2025-08-02T13:29:23.035730Z\\\", \\\"updated_at\\\": \\\"2025-08-03T06:23:45.998448Z\\\", \\\"title\\\": \\\"Incorrect Quiz Score Calculation for Multiple Attempts\\\", \\\"description\\\": \\\"When a student takes a quiz multiple times, the system sometimes incorrectly averages the scores instead of taking the highest score, or it might not update the score at all after a second attempt. This leads to inaccurate performance tracking for students.\\\", \\\"status\\\": \\\"In Progress\\\", \\\"priority\\\": \\\"Low\\\", \\\"assigned_to\\\": 2, \\\"project\\\": 2, \\\"created_by\\\": 3}}\",\n            \"ip_address\": \"RedisChannelLayer(hosts=[{'host': '127.0.0.1', 'port': 6379}])\",\n            \"project\": 2,\n            \"user\": 3\n        },\n        {\n            \"id\": 6,\n            \"created_at\": \"2025-08-03T06:17:03.003682Z\",\n            \"updated_at\": \"2025-08-03T06:17:03.003814Z\",\n            \"action\": \"bug.updated\",\n            \"description\": \"jhon updated bug: Incorrect Quiz Score Calculation for Multiple Attempts\",\n            \"data\": \"{\\\"type\\\": \\\"bug_update\\\", \\\"data\\\": {\\\"action\\\": \\\"bug.updated\\\", \\\"id\\\": 16, \\\"created_at\\\": \\\"2025-08-02T13:29:23.035730Z\\\", \\\"updated_at\\\": \\\"2025-08-03T06:17:02.988737Z\\\", \\\"title\\\": \\\"Incorrect Quiz Score Calculation for Multiple Attempts\\\", \\\"description\\\": \\\"When a student takes a quiz multiple times, the system sometimes incorrectly averages the scores instead of taking the highest score, or it might not update the score at all after a second attempt. This leads to inaccurate performance tracking for students.\\\", \\\"status\\\": \\\"In Progress\\\", \\\"priority\\\": \\\"Low\\\", \\\"assigned_to\\\": 2, \\\"project\\\": 2, \\\"created_by\\\": 3}}\",\n            \"ip_address\": \"RedisChannelLayer(hosts=[{'host': '127.0.0.1', 'port': 6379}])\",\n            \"project\": 2,\n            \"user\": 3\n        },\n        {\n            \"id\": 5,\n            \"created_at\": \"2025-08-03T06:14:10.078555Z\",\n            \"updated_at\": \"2025-08-03T06:14:10.078580Z\",\n            \"action\": \"bug.updated\",\n            \"description\": \"jhon updated bug: Incorrect Quiz Score Calculation for Multiple Attempts\",\n            \"data\": \"{\\\"type\\\": \\\"bug_update\\\", \\\"data\\\": {\\\"action\\\": \\\"bug.updated\\\", \\\"id\\\": 16, \\\"created_at\\\": \\\"2025-08-02T13:29:23.035730Z\\\", \\\"updated_at\\\": \\\"2025-08-03T06:14:10.072309Z\\\", \\\"title\\\": \\\"Incorrect Quiz Score Calculation for Multiple Attempts\\\", \\\"description\\\": \\\"When a student takes a quiz multiple times, the system sometimes incorrectly averages the scores instead of taking the highest score, or it might not update the score at all after a second attempt.  This leads to inaccurate performance tracking for students.\\\", \\\"status\\\": \\\"In Progress\\\", \\\"priority\\\": \\\"Low\\\", \\\"assigned_to\\\": 2, \\\"project\\\": 2, \\\"created_by\\\": 3}}\",\n            \"ip_address\": \"RedisChannelLayer(hosts=[{'host': '127.0.0.1', 'port': 6379}])\",\n            \"project\": 2,\n            \"user\": 3\n        },\n        {\n            \"id\": 4,\n            \"created_at\": \"2025-08-02T14:08:41.068325Z\",\n            \"updated_at\": \"2025-08-02T14:08:41.072208Z\",\n            \"action\": \"comment.created\",\n            \"description\": \"monir created comment in project : Test project update partially\",\n            \"data\": \"{\\\"type\\\": \\\"comment_notification\\\", \\\"data\\\": {\\\"action\\\": \\\"comment.create\\\", \\\"id\\\": 1, \\\"created_at\\\": \\\"2025-08-01T05:39:04.839135Z\\\", \\\"updated_at\\\": \\\"2025-08-02T14:08:41.062188Z\\\", \\\"message\\\": \\\"Give me the full details and logs. (partially update)\\\", \\\"bug\\\": 1, \\\"commenter\\\": 1}}\",\n            \"ip_address\": \"RedisChannelLayer(hosts=[{'host': '127.0.0.1', 'port': 6379}])\",\n            \"project\": 1,\n            \"user\": 1\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Log by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/activity-logs/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"activity-logs",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Log by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/activity-logs/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"activity-logs",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "843"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"created_at\": \"2025-08-02T13:29:23.105659Z\",\n    \"updated_at\": \"2025-08-02T13:29:23.105687Z\",\n    \"action\": \"bug.created\",\n    \"description\": \"jhon created bug: Course Search Filter Not Working for Categories\",\n    \"data\": \"{\\\"type\\\": \\\"bug_update\\\", \\\"data\\\": {\\\"action\\\": \\\"bug.created\\\", \\\"id\\\": 16, \\\"created_at\\\": \\\"2025-08-02T13:29:23.035730Z\\\", \\\"updated_at\\\": \\\"2025-08-02T13:29:23.035800Z\\\", \\\"title\\\": \\\"Course Search Filter Not Working for Categories\\\", \\\"description\\\": \\\"Users are unable to filter courses by category. When a category is selected in the search filter, the search results remain unchanged or display irrelevant courses.\\\", \\\"status\\\": \\\"In Progress\\\", \\\"priority\\\": \\\"Low\\\", \\\"assigned_to\\\": 2, \\\"project\\\": 2, \\\"created_by\\\": 3}}\",\n    \"ip_address\": \"RedisChannelLayer(hosts=[{'host': '127.0.0.1', 'port': 6379}])\",\n    \"project\": 2,\n    \"user\": 3\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

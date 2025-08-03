@@ -142,6 +142,9 @@ let socket = new WebSocket("ws://localhost:8000/ws/logs/");
 ## Project workflow/planning available at
 **=> [Workflow/Planning](https://github.com/MdMonirHossan/bugtracker/blob/main/Project_planning.txt)**
 
+## Postman API collection available at
+**=> [Postman Collection](https://github.com/MdMonirHossan/bugtracker/blob/main/DoinTech.postman_collection.json)**
+
 
 ## API Endpoints
 
